@@ -297,6 +297,7 @@
     <Content Include="CarnegieDataModel.edmx.diagram">
       <DependentUpon>CarnegieDataModel.edmx</DependentUpon>
     </Content>
+    <Content Include="CarnegieDB\CarnegieDB.zip" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
