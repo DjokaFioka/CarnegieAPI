@@ -71,7 +71,7 @@ namespace CarnegieAPI.Controllers
                     var c = await Task.Run(() => db.Contacts.FirstOrDefault(e => e.Id == contact.Id));
                     if (c == null)
                     {
-                        return Content(HttpStatusCode.NotFound, "Contact with Id " + contact.Id.ToString() + " not found to update!");
+                        return BadRequest("Contact with Id " + contact.Id.ToString() + " not found to update!");
                     }
                     else
                     {
@@ -93,8 +93,8 @@ namespace CarnegieAPI.Controllers
 
         }
 
-        // POST api/Contact/Delete
-        [HttpPost]
+        // DELETE api/Contact/Delete
+        [HttpDelete]
         [Route("Delete")]
         public async Task<IHttpActionResult> Delete([FromUri] int id)
         {
@@ -129,8 +129,8 @@ namespace CarnegieAPI.Controllers
             }
         }
 
-        // POST api/Contact/DeleteAll
-        [HttpPost]
+        // DELETE api/Contact/DeleteAll
+        [HttpDelete]
         [Route("DeleteAll")]
         public async Task<IHttpActionResult> DeleteAll()
         {
@@ -172,10 +172,7 @@ namespace CarnegieAPI.Controllers
                 {
                     List<pGetContacts_Result> contactList = await Task.Run(() => db.pGetContacts().ToList());
                     
-                    if (contactList != null)
-                        return Ok(contactList);
-                    else
-                        return Content(HttpStatusCode.NotFound, "No data was found");
+                    return Ok(contactList);
                 }
 
             }
